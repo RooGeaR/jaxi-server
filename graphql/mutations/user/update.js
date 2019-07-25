@@ -18,6 +18,12 @@ export default {
     last_name: {
       type: new GraphQLNonNull(GraphQLString)
     },
+    email: {
+      type: new GraphQLNonNull(GraphQLString)
+    },
+    username: {
+      type: new GraphQLNonNull(GraphQLString)
+    },
     password: {
       type: new GraphQLNonNull(GraphQLString)
     }
