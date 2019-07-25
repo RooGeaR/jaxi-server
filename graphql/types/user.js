@@ -34,6 +34,20 @@ export default new GraphQLObjectType({
                     return user.last_name;
                 }
             },
+            email: {
+                type: GraphQLString,
+                description: "user's email",
+                resolve (user) {
+                    return user.email;
+                }
+            },
+            username: {
+                type: GraphQLString,
+                description: "user's username",
+                resolve (user) {
+                    return user.username;
+                }
+            },
             password: {
                 type: GraphQLString,
                 description: "user's password",

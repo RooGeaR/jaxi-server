@@ -13,6 +13,8 @@ export default {
         return models.users.build({
             first_name: args.user.first_name,
             last_name: args.user.last_name,
+            email: args.user.email,
+            username: args.user.username,
             password: args.user.password,
             created_at: args.user.created_at,
         }).save().then(function(newuser) {
