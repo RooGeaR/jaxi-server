@@ -1,6 +1,6 @@
 import models from '../../../models';
 import Project from '../../types/project';
-import ProjectInput from '../../inputs/project';
+import { ProjectInput } from '../../inputs/project';
 
 export default {
     type: Project,

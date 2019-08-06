@@ -1,41 +1,24 @@
-import {
-  GraphQLInt,
-  GraphQLNonNull,
-  GraphQLString
-} from 'graphql';
 import models from '../../../models';
 import User from '../../types/user';
+import { UserInputUpdate } from '../../inputs/user';
 
 export default {
   type: User,
   args: {
-    id: {
-      type: new GraphQLNonNull(GraphQLInt)
-    },
-    first_name: {
-      type: new GraphQLNonNull(GraphQLString)
-    },
-    last_name: {
-      type: new GraphQLNonNull(GraphQLString)
-    },
-    email: {
-      type: new GraphQLNonNull(GraphQLString)
-    },
-    username: {
-      type: new GraphQLNonNull(GraphQLString)
-    },
-    password: {
-      type: new GraphQLNonNull(GraphQLString)
+    user: {
+      type: UserInputUpdate
     }
   },
   resolve (source, args) {
-    return models.project
-      .findByPk(args.id)
-      .then((project) => {
-        return project.update({ 
-          first_name: args.first_name,
-          last_name: args.last_name,
-          password: args.password
+    return models.users
+      .findByPk(args.user.id)
+      .then((user) => {
+        return user.update({
+          first_name: args.user.first_name,
+          last_name: args.user.last_name,
+          email: args.user.email,
+          username: args.user.username,
+          password: args.user.password
         });
       });
   }
