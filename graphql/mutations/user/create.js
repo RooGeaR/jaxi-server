@@ -1,6 +1,6 @@
 import models from '../../../models';
 import User from '../../types/user';
-import UserInput from '../../inputs/user';
+import { UserInput } from '../../inputs/user';
 
 export default {
     type: User,

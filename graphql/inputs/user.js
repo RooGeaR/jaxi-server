@@ -2,11 +2,13 @@ import {
   GraphQLInputObjectType,
   GraphQLString,
   GraphQLList,
+  GraphQLInt,
+  GraphQLNonNull,
 } from 'graphql';
 
-import ProjectInput from './project';
+import { ProjectInput } from './project';
 
-export default new GraphQLInputObjectType({
+const UserInput = new GraphQLInputObjectType({
   name: 'userInput',
   fields: () => ({
       first_name: { type: GraphQLString },
@@ -19,3 +21,29 @@ export default new GraphQLInputObjectType({
       projects: { type: new GraphQLList(ProjectInput) }
   })
 });
+
+const UserInputUpdate = new GraphQLInputObjectType({
+  name: 'userInputUpdate',
+  fields: () => ({
+    id: {
+      type: new GraphQLNonNull(GraphQLInt)
+    },
+    first_name: {
+      type: new GraphQLNonNull(GraphQLString)
+    },
+    last_name: {
+      type: new GraphQLNonNull(GraphQLString)
+    },
+    email: {
+      type: new GraphQLNonNull(GraphQLString)
+    },
+    username: {
+      type: new GraphQLNonNull(GraphQLString)
+    },
+    password: {
+      type: new GraphQLNonNull(GraphQLString)
+    }
+  })
+});
+
+export { UserInput, UserInputUpdate };

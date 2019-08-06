@@ -3,8 +3,8 @@ import {
   GraphQLInt,
 } from 'graphql';
 
-import models from '../../../models/index.js';
-import User from '../../types/user.js';
+import models from '../../../models';
+import User from '../../types/user';
 
 export default {
   type: new GraphQLList(User),
@@ -22,6 +22,6 @@ export default {
     const limit = args.first || 10;
     delete args.offset;
     delete args.first;
-    return models.users.findAll({where: args, include: [ { model: models.comments } ], offset, limit});
+    return models.users.findAll({where: args, include: [ { model: models.project } ], offset, limit});
   }
 };
